@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 const Home = () =>{
@@ -34,6 +35,14 @@ const Home = () =>{
         <td>{user.name}</td>
         <td>{user.username}</td>
         <td>{user.email}</td>
+        <td>
+        <a class="btn btn-primary m-2" href="#" role="button">View</a>
+        <a class="btn btn-outline-primary m-2" href="#" role="button">Edit</a>
+        <a class="btn btn-danger" href="#" role="button">Delete</a>
+        
+         
+         
+        </td>
        </tr>
 ))
 }
