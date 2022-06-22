@@ -7,6 +7,8 @@ import About from "./components/pages/About";
 import Navbar from "./components/pages/layout/navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Adduser from "./components/user/Adduser";
+import EditUser from "./components/user/EditUser";
+import ViewUser from "./components/user/View";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/users/add" element={<Adduser />} />
+          <Route path="/users/edit/:id" element={<EditUser />} />
+          <Route path="/users/view/:id" element={<ViewUser />} />
         </Routes>
       </div>
     </BrowserRouter>

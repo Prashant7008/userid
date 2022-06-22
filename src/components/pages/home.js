@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Alert } from "bootstrap";
 
 const Home = () => {
   const [users, setuser] = useState([]);
@@ -18,6 +19,12 @@ const Home = () => {
       console.log("error: ", error);
     }
   };
+  const deleteUser = async id=>{
+    await axios.delete(`http://localhost:3003/user/${id}`);
+    loadusers();
+      alert('Are You Confirm to delete');
+  };
+
   return (
     <div className="container">
       <div className="py-4">
@@ -40,15 +47,19 @@ const Home = () => {
                 <td>{user.username}</td>
                 <td>{user.email}</td>
                 <td>
-                  <a class="btn btn-primary m-2" href="#" role="button">
+                  <Link class="btn btn-primary m-2" to={`users/View/${user.id}`} role="button">
                     View
-                  </a>
-                  <a class="btn btn-outline-primary m-2" href="#" role="button">
+                  </Link>
+                  <Link class="btn btn-outline-primary m-2" to={`users/edit/${user.id}`} role="button">
                     Edit
-                  </a>
-                  <a class="btn btn-danger" href="#" role="button">
+                  </Link >
+                 
+                  <a class="btn btn-danger" onClick={()=> deleteUser(user.id)} role="button">
                     Delete
+                    
                   </a>
+                
+            
                 </td>
               </tr>
             ))}
